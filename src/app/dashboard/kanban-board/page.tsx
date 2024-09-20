@@ -9,7 +9,7 @@ import { useTaskManagement } from '@/hooks/useTaskManagement';
 export default function KanbanBoardPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const { tasks, updateTask } = useTaskManagement();
+  const { tasks, updateTask, deleteTask } = useTaskManagement();
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -24,7 +24,7 @@ export default function KanbanBoardPage() {
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <h1 className="text-3xl font-bold mb-8">Kanban Board</h1>
-      <KanbanBoard tasks={tasks} onUpdateTask={updateTask} />
+      <KanbanBoard tasks={tasks} onUpdateTask={updateTask} onDeleteTask={deleteTask}/>
     </div>
   );
 }

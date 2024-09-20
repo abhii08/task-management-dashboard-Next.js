@@ -6,9 +6,10 @@ import { TaskCard } from './TaskCard';
 interface KanbanBoardProps {
   tasks: Task[];
   onUpdateTask: (task: Task) => void;
+  onDeleteTask: (taskId: string) => void;
 }
 
-export const KanbanBoard: React.FC<KanbanBoardProps> = ({ tasks, onUpdateTask }) => {
+export const KanbanBoard: React.FC<KanbanBoardProps> = ({ tasks, onUpdateTask, onDeleteTask }) => {
   const columns = ['To Do', 'In Progress', 'Completed'];
 
   const onDragEnd = (result: any) => {
@@ -47,9 +48,10 @@ export const KanbanBoard: React.FC<KanbanBoardProps> = ({ tasks, onUpdateTask })
                             {...provided.dragHandleProps}
                           >
                             <TaskCard
+                              key={task._id}
                               task={task}
                               onUpdate={onUpdateTask}
-                              onDelete={() => {}}
+                              onDelete={onDeleteTask}
                             />
                           </div>
                         )}

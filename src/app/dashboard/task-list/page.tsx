@@ -9,9 +9,10 @@ import { useTaskManagement } from '@/hooks/useTaskManagement';
 
 export default function TaskListPage() {
   const { data: session, status } = useSession();
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const router = useRouter();
   const { tasks, addTask, updateTask, deleteTask } = useTaskManagement();
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  
 
   useEffect(() => {
     if (status === 'unauthenticated') {
