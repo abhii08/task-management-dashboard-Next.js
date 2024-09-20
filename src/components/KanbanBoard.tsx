@@ -49,7 +49,7 @@ export const KanbanBoard: React.FC<KanbanBoardProps> = ({ tasks, onUpdateTask })
                             <TaskCard
                               task={task}
                               onUpdate={onUpdateTask}
-                              onDelete={() => {}} // Implement delete functionality if needed
+                              onDelete={() => {}}
                             />
                           </div>
                         )}

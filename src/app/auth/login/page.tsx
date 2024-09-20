@@ -20,7 +20,6 @@ export default function Login() {
     });
 
     if (result?.error) {
-      // Handle error
       console.error(result.error);
     } else {
       router.push('/dashboard');

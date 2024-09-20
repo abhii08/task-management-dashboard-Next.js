@@ -22,7 +22,6 @@ export default function Register() {
     if (response.ok) {
       router.push('/auth/login');
     } else {
-      // Handle error
       console.error('Registration failed');
     }
   };

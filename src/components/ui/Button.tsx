@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 interface ButtonProps {
   children: ReactNode;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void; // Change type to accept event
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   type?: "button" | "submit" | "reset";
   className?: string;
 }
