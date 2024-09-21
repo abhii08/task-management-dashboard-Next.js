@@ -24,6 +24,10 @@ export default function TaskListPage() {
     return <div>Loading...</div>;
   }
 
+  if(!session) {
+    return null;
+  }
+
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <h1 className="text-3xl font-bold mb-8">Task List</h1>
