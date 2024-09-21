@@ -33,7 +33,6 @@ export default function TaskListPage() {
       >
         Add New Task
       </button>
-      <TaskList tasks={tasks} onUpdateTask={updateTask} onDeleteTask={deleteTask} />
       {isFormOpen && (
         <TaskForm
           onSubmit={(task) => {
@@ -43,6 +42,7 @@ export default function TaskListPage() {
           onCancel={() => setIsFormOpen(false)}
         />
       )}
+      <TaskList tasks={tasks} onUpdateTask={updateTask} onDeleteTask={deleteTask} />
     </div>
   );
 }

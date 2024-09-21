@@ -54,7 +54,7 @@ export async function PUT(request: Request) {
   await connectToDatabase();
 
   const task = await Task.findOneAndUpdate(
-    { _id: id, userId: token.id },
+    { _id: id, userId: token.sub },
     updateData,
     { new: true }
   );

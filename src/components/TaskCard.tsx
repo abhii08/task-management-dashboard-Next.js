@@ -10,6 +10,7 @@ interface TaskCardProps {
 }
 
 export const TaskCard: React.FC<TaskCardProps> = ({ task, onUpdate, onDelete }) => {
+  
   return (
     <Card title='Team Updates'>
       <CardHeader>
