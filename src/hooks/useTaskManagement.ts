@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+'use client'
+
+import { useState, useEffect, useCallback } from 'react';
 import { Task } from '@/types';
 
 export const useTaskManagement = () => {
@@ -8,7 +10,7 @@ export const useTaskManagement = () => {
     fetchTasks();
   }, []);
 
-  const fetchTasks = async () => {
+  const fetchTasks = useCallback(async () => {
     try {
       const response = await fetch('/api/tasks');
       if (response.ok) {
@@ -20,9 +22,9 @@ export const useTaskManagement = () => {
     } catch (error) {
       console.error('Error fetching tasks:', error);
     }
-  };
+  }, []);
 
-  const addTask = async (task: Omit<Task, '_id'>) => {
+  const addTask = useCallback(async (task: Omit<Task, '_id'>) => {
     try {
       const response = await fetch('/api/tasks', {
         method: 'POST',
@@ -38,9 +40,9 @@ export const useTaskManagement = () => {
     } catch (error) {
       console.error('Error adding task:', error);
     }
-  };
+  }, []);
 
-  const updateTask = async (updatedTask: Task) => {
+  const updateTask = useCallback(async (updatedTask: Task) => {
     try {
       const response = await fetch('/api/tasks', {
         method: 'PUT',
@@ -56,9 +58,9 @@ export const useTaskManagement = () => {
     } catch (error) {
       console.error('Error updating task:', error);
     }
-  };
+  }, []);
   
-  const deleteTask = async (taskId: string) => {
+  const deleteTask = useCallback(async (taskId: string) => {
     try {
       const response = await fetch('/api/tasks', {
         method: 'DELETE',
@@ -73,7 +75,7 @@ export const useTaskManagement = () => {
     } catch (error) {
       console.error('Error deleting task:', error);
     }
-  };
+  }, []);
 
   return { tasks, addTask, updateTask, deleteTask };
 };

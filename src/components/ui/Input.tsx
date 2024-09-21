@@ -3,7 +3,6 @@
 export const Input = ({
     placeholder,
     onChange,
-    label,
     type = "text",
     value,
     required = false,
@@ -11,7 +10,6 @@ export const Input = ({
 }: {
     placeholder: string;
     onChange: (value: string) => void;
-    label: string;
     type?: string;
     value?: string;
     required?: boolean;
@@ -19,9 +17,7 @@ export const Input = ({
 }) => {
     return (
         <div className="pt-2">
-            <label className="block mb-2 text-sm font-medium text-gray-900">
-                {label}
-            </label>
+            
             <input
                 onChange={(e) => onChange(e.target.value)}
                 type={type}

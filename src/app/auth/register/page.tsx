@@ -31,7 +31,6 @@ export default function Register() {
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mb-4">Register</h2>
         <Input
-          label='Name'
           type="text"
           value={name}
           onChange={(e:any) => setName(e)}
@@ -40,7 +39,6 @@ export default function Register() {
           required
         />
         <Input
-          label='email'
           type="email"
           value={email}
           onChange={(e:any) => setEmail(e)}
@@ -49,7 +47,6 @@ export default function Register() {
           required
         />
         <Input
-          label='password'
           type="password"
           value={password}
           onChange={(e:any) => setPassword(e)}
