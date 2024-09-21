@@ -45,14 +45,14 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSubmit, onCancel }) 
       <Input
         type="text"
         value={title}
-        onChange={(e) => setTitle(e)}
+        onChange={(value) => setTitle(value)}
         placeholder="Title"
         required
       />
       <Input
         type="text"
         value={description}
-        onChange={(e) => setDescription(e)}
+        onChange={(value) => setDescription(value)}
         placeholder="Description" 
       />
       <Select<'To Do' | 'In Progress' | 'Completed'>
@@ -69,7 +69,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSubmit, onCancel }) 
         type="date"
         value={dueDate}
         placeholder="Due date"
-        onChange={(e) => setDueDate(e)}
+        onChange={(value) => setDueDate(value)}
       />
       <div className="space-x-2">
         <Button type='submit' onClick={handleSubmit}>Submit</Button>

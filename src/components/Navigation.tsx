@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 
 export function Navigation() {
   const { data: session, status } = useSession();
-
+  
   return (
     <nav className="bg-gray-800 text-white p-4">
       <div className="container mx-auto flex justify-between items-center">

@@ -34,6 +34,7 @@ export const useTaskManagement = () => {
       if (response.ok) {
         const newTask = await response.json();
         setTasks([...tasks, newTask]);
+        await fetchTasks();
       } else {
         console.error('Failed to add task');
       }
@@ -52,6 +53,7 @@ export const useTaskManagement = () => {
       if (response.ok) {
         const updatedTaskData = await response.json();
         setTasks(tasks.map((task) => (task._id === updatedTaskData._id ? updatedTaskData : task)));
+        await fetchTasks();
       } else {
         console.error('Failed to update task');
       }
@@ -69,6 +71,7 @@ export const useTaskManagement = () => {
       });
       if (response.ok) {
         setTasks(tasks.filter((task) => task._id !== taskId));
+        await fetchTasks();
       } else {
         console.error('Failed to delete task');
       }
