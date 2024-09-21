@@ -49,12 +49,12 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const { id, ...updateData } = await request.json();
+  const { _id, ...updateData } = await request.json();
 
   await connectToDatabase();
 
   const task = await Task.findOneAndUpdate(
-    { _id: id, userId: token.sub },
+    { _id, userId: token.id },
     updateData,
     { new: true }
   );

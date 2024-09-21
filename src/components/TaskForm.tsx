@@ -75,8 +75,8 @@ export const TaskForm: React.FC<TaskFormProps> = ({ task, onSubmit, onCancel }) 
         onChange={(e) => setDueDate(e)}
       />
       <div className="space-x-2">
-        <Button onClick={handleSubmit}>Submit</Button>
-        <Button onClick={onCancel}>Cancel</Button>
+        <Button type='submit' onClick={handleSubmit}>Submit</Button>
+        <Button type='button' onClick={onCancel}>Cancel</Button>
       </div>
     </form>
   );
