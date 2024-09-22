@@ -6,10 +6,6 @@ import { Task } from '@/types';
 export const useTaskManagement = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
 
-  useEffect(() => {
-    fetchTasks();
-  }, []);
-
   const fetchTasks = useCallback(async () => {
     try {
       const response = await fetch('/api/tasks');
@@ -23,6 +19,10 @@ export const useTaskManagement = () => {
       console.error('Error fetching tasks:', error);
     }
   }, []);
+
+  useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]);
 
   const addTask = useCallback(async (task: Omit<Task, '_id'>) => {
     try {
@@ -41,7 +41,7 @@ export const useTaskManagement = () => {
     } catch (error) {
       console.error('Error adding task:', error);
     }
-  }, []);
+  }, [fetchTasks, tasks]);
 
   const updateTask = useCallback(async (updatedTask: Task) => {
     try {
@@ -60,7 +60,7 @@ export const useTaskManagement = () => {
     } catch (error) {
       console.error('Error updating task:', error);
     }
-  }, []);
+  }, [fetchTasks, tasks]);
   
   const deleteTask = useCallback(async (taskId: string) => {
     try {
@@ -78,7 +78,7 @@ export const useTaskManagement = () => {
     } catch (error) {
       console.error('Error deleting task:', error);
     }
-  }, []);
+  }, [fetchTasks, tasks]);
 
   return { tasks, addTask, updateTask, deleteTask };
 };

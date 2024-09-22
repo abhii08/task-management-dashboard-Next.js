@@ -7,7 +7,7 @@ import Login from './auth/login/page';
 import Register from './auth/register/page';
 
 export default function Home() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

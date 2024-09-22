@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/db';
 import Task from '@/models/Task';
 import { getToken } from 'next-auth/jwt';
 
-export async function GET(request: Request) {
-  const token = await getToken({ req: request as any });
+export async function GET(request: NextRequest) {
+  const token = await getToken({ req: request });
 
   if (!token) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -17,8 +17,8 @@ export async function GET(request: Request) {
   return NextResponse.json(tasks);
 }
 
-export async function POST(request: Request) {
-  const token = await getToken({ req: request as any });
+export async function POST(request: NextRequest) {
+  const token = await getToken({ req: request });
 
   if (!token) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -42,8 +42,8 @@ export async function POST(request: Request) {
   return NextResponse.json(task);
 }
 
-export async function PUT(request: Request) {
-  const token = await getToken({ req: request as any });
+export async function PUT(request: NextRequest) {
+  const token = await getToken({ req: request });
 
   if (!token) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -66,8 +66,8 @@ export async function PUT(request: Request) {
   return NextResponse.json(task);
 }
 
-export async function DELETE(request: Request) {
-  const token = await getToken({ req: request as any });
+export async function DELETE(request: NextRequest) {
+  const token = await getToken({ req: request });
 
   if (!token) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

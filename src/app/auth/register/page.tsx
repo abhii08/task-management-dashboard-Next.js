@@ -33,7 +33,7 @@ export default function Register() {
         <Input
           type="text"
           value={name}
-          onChange={(e:any) => setName(e)}
+          onChange={setName}
           placeholder="Name"
           className="mb-4"
           required
@@ -41,7 +41,7 @@ export default function Register() {
         <Input
           type="email"
           value={email}
-          onChange={(e:any) => setEmail(e)}
+          onChange={setEmail}
           placeholder="Email"
           className="mb-4"
           required
@@ -49,7 +49,7 @@ export default function Register() {
         <Input
           type="password"
           value={password}
-          onChange={(e:any) => setPassword(e)}
+          onChange={setPassword}
           placeholder="Password"
           className="mb-4"
           required

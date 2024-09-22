@@ -1,5 +1,5 @@
 import React from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import { Task } from '@/types';
 import { TaskCard } from './TaskCard';
 
@@ -10,16 +10,17 @@ interface KanbanBoardProps {
 }
 
 export const KanbanBoard: React.FC<KanbanBoardProps> = ({ tasks, onUpdateTask, onDeleteTask }) => {
-  const columns = ['To Do', 'In Progress', 'Completed'];
+  const columns:Array<Task['status']> = ['To Do', 'In Progress', 'Completed'];
 
-  const onDragEnd = (result: any) => {
+  const onDragEnd = (result: DropResult) => {
     if (!result.destination) return;
 
     const { source, destination } = result;
     const task = tasks.find((t) => t._id === result.draggableId);
 
     if (task && source.droppableId !== destination.droppableId) {
-      const updatedTask = { ...task, status: destination.droppableId };
+      const newStatus = destination.droppableId as Task['status'];
+      const updatedTask: Task = { ...task, status: newStatus };
       onUpdateTask(updatedTask);
     }
   };

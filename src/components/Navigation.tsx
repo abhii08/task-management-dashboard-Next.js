@@ -5,7 +5,7 @@ import { useSession, signOut } from 'next-auth/react';
 import { Button } from '@/components/ui/Button';
 
 export function Navigation() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   
   return (
     <nav className="bg-gray-800 text-white p-4">

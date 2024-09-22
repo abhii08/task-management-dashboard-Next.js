@@ -1,4 +1,6 @@
-export interface User {
+import { User as NextAuthUser } from 'next-auth';
+
+export interface User extends NextAuthUser {
   _id: string;
   name: string;
   email: string;
