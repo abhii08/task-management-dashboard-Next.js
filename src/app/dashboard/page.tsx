@@ -13,16 +13,22 @@ import KanbanBoardPage from './kanban-board/page';
 export default function Dashboard() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const { tasks } = useTaskManagement();
+  const { tasks, fetchTasks } = useTaskManagement();
 
   useEffect(() => {
     if (status === 'unauthenticated') {
       router.push('/auth/login');
+    } else if (status === 'authenticated') {
+      fetchTasks();
     }
-  }, [status, router]);
+  }, [status, router, fetchTasks]);
 
   if (status === 'loading') {
     return <div>Loading...</div>;
+  }
+  
+  if (!session) {
+    return null;
   }
 
   const todoCount = tasks.filter(task => task.status === 'To Do').length;

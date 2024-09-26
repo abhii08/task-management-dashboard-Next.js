@@ -1,3 +1,4 @@
+// lib/authOptions.ts
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { connectToDatabase } from '@/lib/db';
@@ -19,8 +20,8 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        const user = await UserModel.findOne({ email: credentials?.email });
-        if (user && credentials?.password) {
+        const user = await UserModel.findOne({ email: credentials.email });
+        if (user && credentials.password) {
           const isValid = await bcrypt.compare(credentials.password, user.password);
           if (isValid) {
             return { id: user._id.toString(), name: user.name, email: user.email };
@@ -47,4 +48,5 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/auth/login',
   },
+  secret: process.env.NEXTAUTH_SECRET,
 };
